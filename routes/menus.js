@@ -1,12 +1,7 @@
 import express from 'express';
-import { PrismaClient } from '@prisma/client';
-
 const router = express.Router();
-const prisma = new PrismaClient();
-router.get('/stats', async (req, res, next) => {
-  const menus = prisma.menu.findMany();
-  const orders = prisma.order.findMany();
 
+router.get('/stats', (req, res, next) => {
   res.status(200).json({
     stats: {
       totalMenus: 3,
