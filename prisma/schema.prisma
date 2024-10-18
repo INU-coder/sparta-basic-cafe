@@ -18,11 +18,14 @@ model Menu {
   name        String
   type        String
   temperature String
-  price       Int
-  totalOrders Int
+  price       Float
+
+  orders OrderHistory[]
 }
 
-model Order {
-  id     Int @id @default(autoincrement())
-  menuId Int
+model OrderHistory {
+  id      Int @id @default(autoincrement())
+  menu_id Int
+
+  menu Menu @relation(fields: [menu_id], references: [id])
 }
